@@ -26,8 +26,8 @@ class RidesService {
 // This might allow filling ride
 //
 //TODO-Refactor Rides Service (BLA-102): Create RidesFilter class
-class RidesFilter {
-  final bool acceptPets;
+// class RidesFilter {
+//   final bool acceptPets;
   
-  RidesFilter({required this.acceptPets});
-}
+//   RidesFilter({required this.acceptPets});
+// }

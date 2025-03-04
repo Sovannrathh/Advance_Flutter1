@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:blablacar_w4/repository/mock/MockLocationsRepository.dart';
 import 'package:blablacar_w4/repository/mock/mock_ride_preferences_repository.dart';
+import 'package:blablacar_w4/service/locations_service.dart';
+import 'package:flutter/material.dart';
 import 'screens/ride_pref/ride_pref_screen.dart';
 import 'service/ride_prefs_service.dart';
 import 'theme/theme.dart';
@@ -8,6 +10,8 @@ void main() {
 
   // 1 - Initialize the services
   RidePrefService.initialize(MockRidePreferencesRepository());
+  
+  LocationsService.instance.initialize(MockLocationsRepository());
 
   // 2- Run the UI
   runApp(const MyApp());

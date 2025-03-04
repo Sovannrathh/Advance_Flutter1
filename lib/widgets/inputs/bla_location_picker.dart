@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:blablacar_w4/model/ride/locations.dart';
+import 'package:flutter/material.dart';
 
 import '../../service/locations_service.dart';
 import '../../theme/theme.dart';
@@ -55,7 +55,7 @@ class _BlaLocationPickerState extends State<BlaLocationPicker> {
   }
 
   List<Location> getLocationsFor(String text) {
-    return LocationsService.availableLocations
+    return LocationsService.instance.getLocations()
         .where((location) =>
             location.name.toUpperCase().contains(text.toUpperCase()))
         .toList();

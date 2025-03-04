@@ -1,21 +1,32 @@
-import 'package:blablacar_w4/dummy_data/dummy_data.dart';
 import 'package:blablacar_w4/model/ride/locations.dart';
-import 'package:blablacar_w4/repository/locationsRepository.dart';
+import 'package:blablacar_w4/repository/LocationsRepository.dart';
 
-////
-///   This service handles:
-///   - The list of available rides
-///
 class LocationsService {
-
-  static const List<Location> availableLocations = fakeLocations; 
+  // Private static instance of the class
+  static final LocationsService _instance = LocationsService._internal();
   
-  final LocationsRepository _locationsRepository;
+  // Private repository variable
+  LocationsRepository? _repository;
 
-  LocationsService(this._locationsRepository);
+  // Private constructor
+  LocationsService._internal();
 
-  List<Location> getLocations() {
-    return _locationsRepository.getLocations();
+  // Getter for the singleton instance
+  static LocationsService get instance => _instance;
+
+  // Initializer method to set the repository
+  void initialize(LocationsRepository repository) {
+    _repository = repository;
   }
- 
+
+  // Method to get locations with repository check
+  List<Location> getLocations() {
+    // Ensure repository is initialized before use
+    if (_repository == null) {
+      throw StateError('Repository must be initialized before getting locations');
+    }
+
+    // Delegate location retrieval to the repository
+    return _repository!.getLocations();
+  }
 }
